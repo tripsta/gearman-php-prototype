@@ -5,7 +5,6 @@ Providing an easy to follow installation guide, and working samples for client, 
 gearmand (written in C) and the PECL extension will be used instead of PEAR
 
 ********************************************************************************
-****************** I N S T A L L A T I O N *************************************
 ********************************************************************************
 
 Installing Job Server
@@ -144,7 +143,6 @@ execute this php command from your environment (apache, cli, php -a)
 >0.33
 
 ********************************************************************************
-******************** M O N I T O R I N G ***************************************
 ********************************************************************************
 
 Gearman Monitor
@@ -173,10 +171,21 @@ Installation
 
 gearman administrator script
 ============================
-a command line monitoring tool
+
+monitoring/administator.php  a command line monitoring tool
 
 ********************************************************************************
+********************************************************************************
+Sample
+********************************************************************************
+********************************************************************************
 
+Gearman Manager
+===============
+Gearman Manager will be tested at a later step
+https://github.com/brianlmoon/GearmanManager
+
+********************************************************************************
 Resources
 =========
 
