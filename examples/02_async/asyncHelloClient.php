@@ -17,9 +17,5 @@ $arguments = array(
     'name' => $name
 );
 
-echo $client->do('hello-sleep', json_encode($arguments)).PHP_EOL;
-/*
-$client->addTaskBackground('hellosleep', json_encode($arguments));
-$client->runTasks();
- *
-*/
+$jobHandle = $client->doBackground('hello-sleep', json_encode($arguments));
+echo "Job handle: $jobHandle".PHP_EOL;

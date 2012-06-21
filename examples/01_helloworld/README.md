@@ -2,8 +2,8 @@ Intro
 =====
 
 This example creates a client and a worker.
-THe client requests a a job  to Gearman server passing as arguments 
-* sleepFor: a time to sleep before the work gets completed and the 
+THe client requests a a job  to Gearman server passing as arguments
+* sleepFor: a time to sleep before the work gets completed and the
 * name: name to say hello to
 The worker will perform the task and the client will display the result returned from the server
 
@@ -21,7 +21,7 @@ In terminal run the following scripts
 
 Start Worker
 ------------
-enable a worker 
+enable a worker
     php helloWorker.php
 > Gearman Job Server identifies that there is now a worker that can do the job
 The worker does the job and after 10 seconds the client ends echoing the message
@@ -37,7 +37,7 @@ Monitoring
 ----------
 For monitoring [Gearman Monitor] [1] is a nice and easy to setup solution.
 You can view there
-* status of the Job Server, 
+* status of the Job Server,
 * workers and the jobs they can perform
 * how many items are currently being processed and how many are in the queue
 
