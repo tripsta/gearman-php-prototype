@@ -9,5 +9,5 @@ function helloSleep($job)
 	$arguments = json_decode($job->workload());
 	$sleepFor = $arguments->sleepFor;
 	sleep($sleepFor);
-	return "hello after $sleepFor seconds";
+	return "hello {$arguments->name}, I slept for $sleepFor seconds";
 }
