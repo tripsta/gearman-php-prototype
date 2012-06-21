@@ -1,10 +1,11 @@
 Intro
 =====
 
-This example creates a client that makes a request to Gearman server passing as arguments 
+This example creates a client and a worker.
+THe client requests a a job  to Gearman server passing as arguments 
 * sleepFor: a time to sleep before the work gets completed and the 
 * name: name to say hello to
-The worker will sleep accordingly and return a "Hello ..." string
+The worker will perform the task and the client will display the result returned from the server
 
 Start Server
 ------------
