@@ -1,7 +1,7 @@
 <?php
 $worker= new GearmanWorker();
 $worker->addServer('localhost', 4730);
-$worker->addFunction("hello-sleep", "helloSleep");
+$worker->addFunction("01-hello-sleep", "helloSleep");
 while ($worker->work());
 
 function helloSleep($job)
