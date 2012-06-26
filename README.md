@@ -95,7 +95,7 @@ stop
 
     (echo shutdown ; sleep 0.1) | netcat 127.0.0.1 4730 -w 1
 
-check status in processes: 
+check status in processes:
 
     lsof -i -P | grep gearmand
 
@@ -121,14 +121,21 @@ Installing gearman PHP Extension (PECL)
 
     curl http://pecl.php.net/get/gearman > pecl-gearman.latest.tgz
 
+*NOTE*: if you plan to use GearmanManager pecl gearman 0.81 is recommended instead of 1.0.2 due to a bug
+as described [here](https://bugs.launchpad.net/gearmand/+bug/917006). No need to worry about downgrading.
+Installing 0.8.1 will overwrite previous installation.
+
+    curl http://pecl.php.net/get/gearman-0.8.1.tgz > pecl-gearman.latest.tgz
+
+
 1. install
 
-	tar xzf pecl-gearman.latest.tgz
-	cd gearman-X.Y
-	phpize
-	./configure
-	make
-	make install
+    tar xzf pecl-gearman.latest.tgz
+    cd gearman-X.Y
+    phpize
+    ./configure
+    make
+    make install
 
 1. add php extension
 
