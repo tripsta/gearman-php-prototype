@@ -16,7 +16,6 @@ $arguments = array(
     'sleepFor' => $sleepFor,
     'name' => $name
 );
-
 echo $client->do('01-hello-sleep', json_encode($arguments)).PHP_EOL;
 /*
 $client->addTaskBackground('hellosleep', json_encode($arguments));
