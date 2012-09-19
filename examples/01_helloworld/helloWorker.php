@@ -10,6 +10,8 @@ function helloSleep($job)
 	$arguments = json_decode($job->workload());
 	$sleepFor = $arguments->sleepFor;
 	sleep($sleepFor);
-	newrelic_custom_metric("GearmanDemoHelloWorker" . __FUNCTION__, 2);
+	$metricName = "GearmanDemoHelloWorker" . __FUNCTION__;
+	$metricDuration = $sleepFor * 1000;
+	exec("php newrelic-log.php $metricName $metricDuration");
 	return "hello {$arguments->name}, I slept for $sleepFor seconds";
 }
