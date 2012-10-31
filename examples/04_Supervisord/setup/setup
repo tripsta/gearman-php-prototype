@@ -1,0 +1,15 @@
+echo "* * * * Make sure you have python setup tools installed before proceeding with supervisor installation"
+echo "Installing supervisor..."
+sudo easy_install supervisor
+echo "Copying configuration file to /etc/supervisord.conf..."
+sudo cp supervisord.conf /etc/supervisord.conf
+echo "Copying service file to /etc/init.d/supervisord..."
+sudo cp supervisord /etc/init.d/supervisord
+
+
+echo "Creating an init.d script for supervisord..."
+sudo chmod +x /etc/init.d/supervisord &&
+sudo update-rc.d supervisord defaults &&
+sudo service supervisord restart &&
+echo "\nSupervisord service installed and started successfully.
+Usage: sudo service supervisord {start|stop|restart|status|force-reload}"

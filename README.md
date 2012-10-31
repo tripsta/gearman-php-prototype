@@ -192,6 +192,12 @@ Gearman Manager
 Gearman Manager will be tested at a later step
 https://github.com/brianlmoon/GearmanManager
 
+Supervisord With Gearman
+===============
+Supervisor provides monitoring and controlling of processes on Unix-like systems
+Here an installation script is provided and instructions on how to manage gearman workers with Supervisord
+http://supervisord.org/
+
 ********************************************************************************
 Resources
 =========
