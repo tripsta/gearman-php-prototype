@@ -1,25 +1,29 @@
-gearman-php-prototype
-=====================
+# gearman-php-prototype
 
-Providing an easy to follow installation guide, and working samples for client, job server and workers is the purpose of this repo.
-gearmand (written in C) and the PECL extension will be used instead of PEAR
 
-********************************************************************************
-********************************************************************************
+This document describes the installation process and working samples for client, job server and workers for [Gearman] [1]
 
-Installing Job Server
-=====================
+Example 01: Simple worker and client script
+
+Example 02: Worker and asynchronous client script
+
+Example 03: Managing workers as processes with [Gearman Manager] [3]
+
+Example 04: Managing workers as processes with [Supervisord] [2]
+
+Monitoring: Gearman Monitor web application [Gearman Monitor] [4]
+
+
+## Installing Job Server
+
 gearmand 0.33 is used for this project,
 
 
 The default ubuntu repositories have, at the time of this writing,  a really old version (0.14) therefore decided to move with custom installation.
-`sudo apt-get install gearman-job-server` will produce
-$ gearmand -V
-> gearmand 0.14 - https://launchpad.net/gearmand
 
 
-From PPA (recommended)
-----------------------
+### From PPA (recommended)
+
 
     sudo add-apt-repository ppa:gearman-developers/ppa
     sudo apt-get update
@@ -35,14 +39,13 @@ where oneiric is the codename of the OS (for ubuntu 11.10)
     sudo apt-get install gearman-job-server libgearman-dev gearman-tools
 
 
-Uninstall (from PPA)
---------------------
+### Uninstall (from PPA)
 
     sudo apt-get remove  gearman-job-server libgearman-dev gearman-tools
     sudo apt-get autoremove
 
-From Sources
-------------
+### From Sources
+
 
 install dependencies
 
@@ -65,11 +68,8 @@ Uninstall (from sources)
     make uninstall
 
 
-Job Server Status Changes
-=========================
+## Job Server Status Changes
 
-Daemon
-======
 
 start
 
@@ -83,10 +83,9 @@ check status
 
     sudo service gearman-job-server status
 
-Job Server Process
-==================
+## Job Server Process
 
-> *note*: not fully tested
+
 start
 
     gearmand -d -L 127.0.0.1 -l  /var/log/gearmand.log
@@ -114,8 +113,8 @@ check workers
       (echo workers; sleep 0.1) | netcat 127.0.0.1 4730 -w 1
 
 
-Installing gearman PHP Extension (PECL)
-=======================================
+## Installing gearman PHP Extension (PECL)
+
 
 1. download from PECL
 
@@ -152,12 +151,11 @@ execute this php command from your environment (apache, cli, php -a)
 ********************************************************************************
 ********************************************************************************
 
-Gearman Monitor
-===============
+## Gearman Monitor
+
 Provides a web interface to display worker, server and queue status. Cloned from https://github.com/yugene/Gearman-Monitor
 
-Installation
-------------
+### Installation
 
 1. prerequisite pear Net_Gearman (at the time of the writing 0.2.3 alpha)
 
@@ -176,31 +174,26 @@ Installation
 
 1. browse the site
 
-gearman administrator script
-============================
+### gearman administrator script
+
 
 monitoring/administator.php  a command line monitoring tool
 
-********************************************************************************
-********************************************************************************
-Sample
-********************************************************************************
-********************************************************************************
 
-Gearman Manager
-===============
+## Gearman Manager
+
 Gearman Manager will be tested at a later step
 https://github.com/brianlmoon/GearmanManager
 
-Supervisord With Gearman
-===============
+## Supervisord With Gearman
+
 Supervisor provides monitoring and controlling of processes on Unix-like systems
 Here an installation script is provided and instructions on how to manage gearman workers with Supervisord
 http://supervisord.org/
 
-********************************************************************************
-Resources
-=========
+
+## Resources
+
 
 * http://gearman.org/index.php
 * http://gearman.org/index.php?id=getting_started _(official installation instructions and example)_
@@ -212,4 +205,11 @@ Resources
 * http://java.dzone.com/news/gentle-introduction-gearman _good read for gearman_
 * http://www.modernfidelity.co.uk/tech/installing-configuring-and-running-gearman-php-ubuntu _installation through apt source list update ... a bit confusing on whether it works or not_
 * http://gearman.org/index.php?id=protocol _Gearman Administrative Protocol (search for section 'Administrative Protocol')_
-* https://github.com/yugene/Gearman-Monitor
+* https://github.com/yugene/Gearman-Monitor Monitors Server, Workers and Queue
+* http://supervisord.org/  Managing Gearman Processes (python application)
+* https://github.com/yugene/Gearman-Monitor Managing Gearman Processes (php script)
+
+[1]: http://gearman.org/index.php "Gearman Official Site"
+[2]: http://supervisord.org/ "Supervisord"
+[3]: https://github.com/brianlmoon/GearmanManager "Gearman Manager"
+[4]: https://github.com/yugene/Gearman-Monitor "Gearman Monitor"
