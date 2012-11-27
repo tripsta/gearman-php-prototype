@@ -1,4 +1,6 @@
 echo "* * * * Make sure you have python setup tools installed before proceeding with supervisor installation"
+echo "Installing python-setuptools..."
+sudo apt-get install -y python-setuptools
 echo "Installing supervisor..."
 sudo easy_install supervisor
 echo "Copying configuration file to /etc/supervisord.conf..."
