@@ -16,57 +16,7 @@ Monitoring: Gearman Monitor web application [Gearman Monitor] [4]
 
 ## Installing Job Server
 
-gearmand 0.33 is used for this project,
-
-
-The default ubuntu repositories have, at the time of this writing,  a really old version (0.14) therefore decided to move with custom installation.
-
-
-### From PPA (recommended)
-
-
-    sudo add-apt-repository ppa:gearman-developers/ppa
-    sudo apt-get update
-
-in /etc/apt/sources.list add following lines
-
-    deb http://ppa.launchpad.net/gearman-developers/ppa/ubuntu oneiric main
-    deb-src http://ppa.launchpad.net/gearman-developers/ppa/ubuntu oneiric main
-
-where oneiric is the codename of the OS (for ubuntu 11.10)
-
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1C73E014
-    sudo apt-get install gearman-job-server libgearman-dev gearman-tools
-
-
-### Uninstall (from PPA)
-
-    sudo apt-get remove  gearman-job-server libgearman-dev gearman-tools
-    sudo apt-get autoremove
-
-### From Sources
-
-
-install dependencies
-
-    sudo apt-get install libboost-thread1.46-dev libcloog-ppl0 libboost-program-options-dev
-
-Download
-
-https://launchpad.net/gearmand/trunk/0.33/+download/gearmand-0.33.tar.gz
-
-    tar xzf gearmand-X.Y.tar.gz
-    cd gearmand-X.Y
-    ./configure
-    make
-    make install
-    ldconfig
-
-Uninstall (from sources)
---------------------
-
-    make uninstall
-
+    sudo apt-get install gearman-job-server
 
 ## Job Server Status Changes
 
