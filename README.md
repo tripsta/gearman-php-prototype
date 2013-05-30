@@ -109,19 +109,18 @@ Provides a web interface to display worker, server and queue status. Cloned from
 
 1. prerequisite pear Net_Gearman (at the time of the writing 0.2.3 alpha)
 
-    pear install Net_Gearman
-
-*or* of there is an error due to the alpha status pear install Net_Gearman-0.2.3
-
+```
+   pear install Net_Gearman-0.2.3
+```
 1. git clone https://github.com/yugene/Gearman-Monitor.git
 
 1. setup Gearmonitor on /etc/hosts and apache
 
 1. modify _config.php with the server info
-
+```
     $cfgServers[$i]['address'] = '127.0.0.1:4730';
     $cfgServers[$i]['name'] = 'Gearman server 1';
-
+```
 1. browse the site
 
 ### gearman administrator script
