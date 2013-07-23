@@ -13,14 +13,53 @@ Example 04: Managing workers as processes with [Supervisord] [2]
 
 Monitoring: Gearman Monitor web application [Gearman Monitor] [4]
 
+> At the time of this writing gearman job server (libgearman) 1.1.x or later (part of the 1.2 Series as described [in the series and milestones](https://launchpad.net/gearmand)
+> is considered unstable and pecl client 1.1.x requires modules from libgearman 1.1.
+> Therefore the suggested installation is gearman job server 1.0.6  and pecl 1.0.3
 
-## Installing Job Server
+
+
+
+# Installing Job Server
+
+## From sources Install 1.0.6 (recommended)
+
+```
+curl -L https://launchpad.net/gearmand/1.0/1.0.6/+download/gearmand-1.0.6.tar.gz > gearmand-1.0.6.tar.gz
+tar xzf gearmand-1.0.6.tar.gz &&
+cd gearmand-1.0.6 &&
+./configure &&
+make &&
+sudo make install &&
+cd ../ &&
+rm -rfgearmand-1.0.6
+```
+
+### Setup Service
+Switch to this directory
+```cd setup```
+
+```
+sudo cp init.d-gearman-job-server /etc/init.d/gearman-job-server
+sudo /etc/init.d-gearman-job-server start
+```
+
+## Install Dev version from 1.2 series
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:gearman-developers/ppa
+sudo apt-get update
+sudo apt-get install gearman-job-server gearman-tools
+### Setup service from dev
+```
+sudo /etc/init.d-gearman-job-server start
+```
+
+## Install default from packages
+> the problem with this approach is that Ubuntu has a very old version of gearmand 0.27 or 0.33 depending on the distribution. 
 
     sudo apt-get install gearman-job-server
 
-## Job Server Status Changes
-
-
+### Job Server Status Changes
 start
 
     sudo service gearman-job-server start
@@ -33,9 +72,7 @@ check status
 
     sudo service gearman-job-server status
 
-## Job Server Process
-
-
+### Job Server Process
 start
 
     gearmand -d -L 127.0.0.1 -l  /var/log/gearmand.log
@@ -65,7 +102,13 @@ check workers
 
 ## Installing gearman PHP Extension (PECL)
 
+### from PECL
+```
+sudo pecl uninstall gearman &&
+sudo pecl install gearman-1.0.3
+```
 
+### from sources
 1. download from PECL
 
     curl http://pecl.php.net/get/gearman > pecl-gearman.latest.tgz
