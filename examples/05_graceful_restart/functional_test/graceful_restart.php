@@ -1,7 +1,7 @@
 <?php
 
 define('APPLICATION_PATH', __DIR__ . '/../');
-define('WORKER_STDOUT', '/var/log/workers/stdout.log');
+define('WORKER_STDOUT', '/var/log/workers/stdout-helloWorker.log');
 
 require_once APPLICATION_PATH . '/functional_test/vendor/autoload.php';
 
@@ -9,10 +9,11 @@ use Symfony\Component\Process\Process;
 
 
 truncate_worker_stdout();
+sleep(5);
 
 $numberOfWorkers = 3;
-$numberOfJobs = 10;
-$jobLoad = 1;
+$numberOfJobs = $argv[1];
+$jobLoad = 0.3;
 $workerProcessTimeoutInSeconds = 100;
 
 $workerCommand = sprintf("php %shelloWorker.php", APPLICATION_PATH);
@@ -38,7 +39,6 @@ for ($i=0; $i < $numberOfJobs; $i++) {
 	echo 'client run';
 }
 
-sleep(10);
 
 echo 'done';
 
