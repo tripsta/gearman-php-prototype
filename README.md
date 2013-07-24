@@ -19,6 +19,15 @@ Monitoring: Gearman Monitor web application [Gearman Monitor] [4]
 
 
 
+# Dependencies
+## For Client and Server
+```
+sudo apt-get -y install libgearman-dev libevent-dev
+```
+## For Server
+```
+sudo apt-get -y install libboost-all-dev cloog-ppl
+```
 
 # Installing Job Server
 
@@ -32,7 +41,7 @@ cd gearmand-1.0.6 &&
 make &&
 sudo make install &&
 cd ../ &&
-rm -rfgearmand-1.0.6
+rm -rf gearmand-1.0.6
 ```
 
 ### Setup Service
@@ -41,7 +50,7 @@ Switch to this directory
 
 ```
 sudo cp init.d-gearman-job-server /etc/init.d/gearman-job-server
-sudo /etc/init.d-gearman-job-server start
+sudo /etc/init.d/gearman-job-server start
 ```
 
 ## Install Dev version from 1.2 series
