@@ -1,35 +1,32 @@
 <?php
 
+declare(ticks=1);
 $terminate = false;
 
-pcntl_signal(SIGTERM, function () use (&$terminate) { $terminate = true; });
-pcntl_signal(SIGKILL, function () use (&$terminate) { $terminate = true; });
+pcntl_signal(SIGTERM, function () use (&$terminate) { echo 'sigterm'; $terminate = true; });
 
 $worker= new GearmanWorker();
 $worker->addOptions(GEARMAN_WORKER_NON_BLOCKING);
 $worker->setTimeout(2000);
 $worker->addServer('localhost', 4730);
 $worker->addFunction("02-async-hello", "helloSleep");
-$maxJobs = 2000;
+
+$maxJobs = 17;
 $jobsFinished = 0;
 $startTime = time();
-$restartTimeout = $startTime + (0.5 * 60);
+$restartTimeout = $startTime + (0.15 * 60);
 
 while (!$terminate && (@$worker->work() || $worker->returnCode() == GEARMAN_IO_WAIT || $worker->returnCode() == GEARMAN_NO_JOBS || $worker->returnCode() == GEARMAN_TIMEOUT)) {
-// while (!$terminate && $worker->work()) {
- //    if (GEARMAN_SUCCESS != $worker->returnCode()) {
- //        echo "Worker failed: " . $worker->error() . PHP_EOL;
- //    } else {
-	// 	echo 'Work OK'.PHP_EOL;
-	// }
-	if ($maxJobs <= $jobsFinished) {
+	if (!$terminate && $maxJobs <= $jobsFinished) {
+		echo 'maxJobs' . PHP_EOL;
 		$terminate = true;
 	}
-	if ($restartTimeout <= time()) {
+	if (!$terminate && $restartTimeout <= time()) {
+		echo 'restartTimeout' . PHP_EOL;
 		$terminate = true;
 	}
 
-	if (!@$worker->wait()) {
+	if (!$terminate && !@$worker->wait()) {
 		// echo $worker->timeout();
 		if ($worker->returnCode() == GEARMAN_NO_ACTIVE_FDS) {
 			continue;
@@ -40,18 +37,15 @@ while (!$terminate && (@$worker->work() || $worker->returnCode() == GEARMAN_IO_W
 		}
 		break;
 	}
-	if ($worker->work()) {
-		$jobsFinished++;
-	}
-	// $worker->wait();
 }
 
 $worker->unregisterAll();
 
-echo 'Worker died!' . PHP_EOL;
+echo 'exit' . PHP_EOL;
 
 function helloSleep($job)
 {
+	global $jobsFinished;
 	$arguments = json_decode($job->workload());
 	$sleepFor = $arguments->sleepFor;
 	// sleep($sleepFor);
@@ -82,4 +76,5 @@ function helloSleep($job)
 	} catch (Exception $e) {
 		throw new Exception($e);
 	}
+	$jobsFinished++;
 }

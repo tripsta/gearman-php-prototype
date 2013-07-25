@@ -1,17 +1,6 @@
 # gearman-php-prototype
 
 
-This document describes the installation process and working samples for client, job server and workers for [Gearman] [1]
-
-Example 01: Simple worker and client script
-
-Example 02: Worker and asynchronous client script
-
-Example 03: Managing workers as processes with [Gearman Manager] [3]
-
-Example 04: Managing workers as processes with [Supervisord] [2]
-
-Monitoring: Gearman Monitor web application [Gearman Monitor] [4]
 
 > At the time of this writing gearman job server (libgearman) 1.1.x or later (part of the 1.2 Series as described [in the series and milestones](https://launchpad.net/gearmand)
 > is considered unstable and pecl client 1.1.x requires modules from libgearman 1.1.
@@ -19,7 +8,7 @@ Monitoring: Gearman Monitor web application [Gearman Monitor] [4]
 
 
 
-# Dependencies
+# Software Dependencies
 ## For Client and Server
 ```
 sudo apt-get -y install libgearman-dev libevent-dev
