@@ -1,10 +1,30 @@
 # gearman-php-prototype
+At the time of this writing
 
+> gearman job server (libgearman) 1.1.x or later (part of the 1.2 Series as described [in the series and milestones](https://launchpad.net/gearmand) is considered unstable and
+> pecl client 1.1.x requires modules from libgearman 1.1.
 
+Therefore the suggested installation is gearman job server **1.0.6**  and pecl **1.0.3**
 
-> At the time of this writing gearman job server (libgearman) 1.1.x or later (part of the 1.2 Series as described [in the series and milestones](https://launchpad.net/gearmand)
-> is considered unstable and pecl client 1.1.x requires modules from libgearman 1.1.
-> Therefore the suggested installation is gearman job server 1.0.6  and pecl 1.0.3
+This document describes the installation process and working samples for client, job server and workers for [Gearman] [1]
+
+# Examples
+## Example [01_helloworld](examples/01_helloworld)
+start a client, start a worker (not necessarily in this order) and see the job get done.
+## Example [02_async](examples/02_async)
+start a client, start a worker and see the job get done.
+The client script ends without waiting for the job to finish (work runs in background)
+## Example [03_GearmanManager](examples/03_GearmanManager)
+Spawn workers with [Gearman Manager] [3] (not maintained)
+## Example [04_Supervisord](examples/04_Supervisord)
+Spawn workers with [Supervisord] [2]
+## Example [05_graceful_restart](examples/05_graceful_restart/)
+### Gracefully restart gearman workers
+* Ensure that workers don't drop started but unfinished jobs.
+* terminate the worker based on number of jobs completed and maximum Duration
+
+Monitoring: Gearman Monitor web application [Gearman Monitor] [4]
+
 
 
 
@@ -53,7 +73,7 @@ sudo /etc/init.d-gearman-job-server start
 ```
 
 ## Install default from packages
-> the problem with this approach is that Ubuntu has a very old version of gearmand 0.27 or 0.33 depending on the distribution. 
+> the problem with this approach is that Ubuntu has a very old version of gearmand 0.27 or 0.33 depending on the distribution.
 
     sudo apt-get install gearman-job-server
 
