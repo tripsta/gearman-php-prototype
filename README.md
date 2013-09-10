@@ -192,6 +192,10 @@ Provides a web interface to display worker, server and queue status. Cloned from
     $cfgServers[$i]['address'] = '127.0.0.1:4730';
     $cfgServers[$i]['name'] = 'Gearman server 1';
 ```
+1. Restart Apache
+```
+   sudo service apache2 restart
+```
 1. browse the site
 
 ### gearman administrator script
