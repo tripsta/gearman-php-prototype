@@ -50,7 +50,8 @@ cd gearmand-1.0.6 &&
 make &&
 sudo make install &&
 cd ../ &&
-rm -rf gearmand-1.0.6
+rm -rf gearmand-1.0.6 &&
+rm gearmand-1.0.6.tar.gz
 ```
 
 ### Setup Service
