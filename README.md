@@ -180,7 +180,7 @@ Provides a web interface to display worker, server and queue status. Cloned from
 ```
     <VirtualHost *:80>
 	ServerName gearman-monitor.local
-	DosumentRoot <path-to-project>/Gearman-Monitor
+	DocumentRoot <path-to-project>/Gearman-Monitor
     </VirtualHost>
 ```
 1. Setup Gearmonitor on Apache (modify /etc/hosts)
